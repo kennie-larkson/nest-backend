@@ -1,6 +1,7 @@
 import { IsEmail, IsNotEmpty } from 'class-validator';
 import User from '../interfaces/user.interface';
 export class CreateUserDto implements User {
+  id: number;
   name: string;
 
   @IsEmail()

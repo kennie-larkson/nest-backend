@@ -7,6 +7,7 @@ import User from './interfaces/user.interface';
 export class UserService {
   private readonly users: User[] = [
     {
+      id: 1,
       name: 'Kennie',
       email: 'kennie@email.com',
       password: '123456',
