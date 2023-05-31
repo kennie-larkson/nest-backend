@@ -8,10 +8,12 @@ export class UserService {
   private readonly users: User[] = [
     {
       name: 'Kennie',
-      gender: 'male',
-      complexion: 'dark',
-      age: 20,
-      friends: ['Wale', 'Sheriff'],
+      email: 'kennie@email.com',
+      password: '123456',
+      // gender: 'male',
+      // complexion: 'dark',
+      // age: 20,
+      // friends: ['Wale', 'Sheriff'],
     },
   ];
 
@@ -26,6 +28,10 @@ export class UserService {
 
   findOne(id: number) {
     return `This action returns a #${id} user`;
+  }
+
+  async findByEmail(email: string): Promise<User> {
+    return this.users.find((user) => user.email === email);
   }
 
   update(id: number, updateUserDto: UpdateUserDto) {
