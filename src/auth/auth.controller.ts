@@ -12,7 +12,9 @@ import { AuthService } from './auth.service';
 import { SignInDto } from './dto/signin.dto';
 import { AuthGuard } from './auth.guard';
 import { NoAuthNeeded } from './decorators/public.decorator';
+import { ApiBearerAuth } from '@nestjs/swagger';
 
+@ApiBearerAuth() // this decorator specifies the Bearer Authentication security mechanism for the API documentation
 @Controller('auth')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
