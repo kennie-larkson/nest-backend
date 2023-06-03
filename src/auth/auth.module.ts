@@ -4,6 +4,7 @@ import { AuthService } from './auth.service';
 import { AuthController } from './auth.controller';
 import { UserModule } from 'src/user/user.module';
 import { jwtConstants } from './constants';
+import { AuthGuard } from './auth.guard';
 
 @Module({
   imports: [
@@ -15,7 +16,7 @@ import { jwtConstants } from './constants';
     }),
   ],
   controllers: [AuthController],
-  providers: [AuthService],
+  providers: [AuthService, { provide: 'APP_GUARD', useClass: AuthGuard }],
   exports: [AuthService],
 })
 export class AuthModule {}
