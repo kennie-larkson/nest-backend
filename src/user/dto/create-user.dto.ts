@@ -3,17 +3,20 @@ import User from '../interfaces/user.interface';
 import { ApiProperty } from '@nestjs/swagger';
 
 export class CreateUserDto implements User {
-  @ApiProperty()
+  @ApiProperty({ description: 'unique id of the user', type: 'number' })
   id: number;
 
-  @ApiProperty()
+  @ApiProperty({
+    description: 'name of the user must be provided in the body of the request',
+    type: 'string',
+  })
   name: string;
 
-  @ApiProperty()
+  @ApiProperty({ description: 'must be a valid email format', type: 'email' })
   @IsEmail()
   email: string;
 
-  @ApiProperty()
+  @ApiProperty({ description: 'password must be provided', type: 'string' })
   @IsNotEmpty({})
   password: string;
   // gender: string;
