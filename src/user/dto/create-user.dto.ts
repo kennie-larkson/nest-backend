@@ -3,7 +3,7 @@ import User from '../interfaces/user.interface';
 import { ApiProperty } from '@nestjs/swagger';
 
 export class CreateUserDto implements User {
-  @ApiProperty({ description: 'unique id of the user', type: 'number' })
+  @ApiProperty({ description: 'unique id of the user', type: Number })
   id: number;
 
   @ApiProperty({
