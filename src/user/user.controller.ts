@@ -8,12 +8,15 @@ import {
   Delete,
   Redirect,
   Query,
+  HttpCode,
+  HttpStatus,
 } from '@nestjs/common';
 import { UserService } from './user.service';
 import { MyserviceService } from './../myservice/myservice.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import User from './interfaces/user.interface';
+import { NoAuthNeeded } from 'src/auth/decorators/public.decorator';
 
 @Controller('user')
 export class UserController {
@@ -22,6 +25,7 @@ export class UserController {
     private myService: MyserviceService,
   ) {}
 
+  @NoAuthNeeded()
   @Post()
   create(@Body() createUserDto: CreateUserDto) {
     console.log(createUserDto);
@@ -29,11 +33,14 @@ export class UserController {
     return this.userService.create(createUserDto);
   }
 
-  @Post('by-name')
-  findByEmail(@Body() email: string) {
+  @HttpCode(HttpStatus.FOUND)
+  @NoAuthNeeded()
+  @Get('by-email/:email')
+  findByEmail(@Param('email') email: string) {
     return this.userService.findByEmail(email);
   }
 
+  @NoAuthNeeded()
   @Get()
   async findAll(): Promise<User[]> {
     return this.userService.findAll();
@@ -43,7 +50,6 @@ export class UserController {
   findBoth(@Param('id') id: string, @Query('name') name: string) {
     const myServ = this.myService.callMyService();
     const users = this.userService.findAll();
-    console.log(name);
 
     return `${myServ} and ${users}: ${id}`;
   }

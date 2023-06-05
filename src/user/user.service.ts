@@ -32,7 +32,9 @@ export class UserService {
   }
 
   async findByEmail(email: string): Promise<User> {
-    return this.users.find((user) => user.email === email);
+    const foundUser = this.users.find((user) => user.email === email);
+
+    return foundUser;
   }
 
   update(id: number, updateUserDto: UpdateUserDto) {
