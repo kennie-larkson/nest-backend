@@ -1,8 +1,8 @@
 {
   "name": "nest-application",
   "version": "0.0.1",
-  "description": "",
-  "author": "",
+  "description": "A feature packed backend application in nestjs",
+  "author": "Abdulrafiu Kehinde Lawal",
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
