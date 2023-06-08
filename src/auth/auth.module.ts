@@ -22,7 +22,7 @@ console.log(process.env.NODE_ENV);
           configService.get<string>('NODE_ENV') === 'production'
             ? configService.get('PROD_JWT_SECRET')
             : configService.get('DEV_JWT_SECRET'),
-        //signOptions: { expiresIn: '180s' },
+
         signOptions: {
           expiresIn:
             configService.get<string>('NODE_ENV') === 'production'

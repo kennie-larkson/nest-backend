@@ -12,7 +12,6 @@ import {
   HttpStatus,
 } from '@nestjs/common';
 import { UserService } from './user.service';
-import { MyserviceService } from './../myservice/myservice.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import User from './interfaces/user.interface';
@@ -20,10 +19,7 @@ import { NoAuthNeeded } from 'src/auth/decorators/public.decorator';
 
 @Controller('user')
 export class UserController {
-  constructor(
-    private userService: UserService,
-    private myService: MyserviceService,
-  ) {}
+  constructor(private userService: UserService) {}
 
   @NoAuthNeeded()
   @Post()
@@ -48,10 +44,9 @@ export class UserController {
 
   @Get('both/:id')
   findBoth(@Param('id') id: string, @Query('name') name: string) {
-    const myServ = this.myService.callMyService();
     const users = this.userService.findAll();
 
-    return `${myServ} and ${users}: ${id}`;
+    return ` ${users}: ${id}`;
   }
 
   @Get(':id')
