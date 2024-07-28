@@ -2,11 +2,14 @@ import { Module } from '@nestjs/common';
 import { JwtModule } from '@nestjs/jwt';
 import { AuthService } from './auth.service';
 import { AuthController } from './auth.controller';
-import { UserModule } from 'src/user/user.module';
+import { UserModule } from './../user/user.module';
 
 import { AuthGuard } from './auth.guard';
 import { ConfigService, ConfigModule } from '@nestjs/config';
-console.log(process.env.NODE_ENV);
+import { CacheModule } from '@nestjs/cache-manager';
+import { redisStore } from 'cache-manager-redis-yet';
+import { UserService } from './../user/user.service';
+//console.log(process.env.NODE_ENV);
 
 @Module({
   imports: [
@@ -34,6 +37,10 @@ console.log(process.env.NODE_ENV);
   ],
   controllers: [AuthController],
   providers: [AuthService, { provide: 'APP_GUARD', useClass: AuthGuard }],
-  exports: [AuthService],
+  // providers: [
+  //   AuthService,
+  //   { provide: 'APP_GUARD', useExisting: AuthGuard },
+  //   AuthGuard,
+  // ],
 })
 export class AuthModule {}

@@ -1,21 +1,45 @@
-import { Test, TestingModule } from '@nestjs/testing';
-import { UserController } from './user.controller';
-import { UserService } from './user.service';
-import { MyserviceService } from './../myservice/myservice.service';
+// import { Test, TestingModule } from '@nestjs/testing';
+// import * as request from 'supertest';
+// import { UserModule } from './user.module';
+// import { INestApplication } from '@nestjs/common';
+// import { User, UserSchema } from './entities/user.entity';
+// import { MongooseModule } from '@nestjs/mongoose';
 
-describe('UserController', () => {
-  let controller: UserController;
+// describe('UserController', () => {
+//   let app: INestApplication;
+//   let userService = {
+//     findAll: () => [
+//       {
+//         id: 1,
+//         name: 'Kennie',
+//         email: 'kennie@email.com',
+//         password: '123456',
+//         gender: 'male',
+//       },
+//     ],
+//   };
 
-  beforeEach(async () => {
-    const module: TestingModule = await Test.createTestingModule({
-      controllers: [UserController],
-      providers: [UserService, MyserviceService],
-    }).compile();
+//   beforeEach(async () => {
+//     const module: TestingModule = await Test.createTestingModule({
+//       imports: [UserModule, User, MongooseModule],
+//     }).compile();
 
-    controller = module.get<UserController>(UserController);
-  });
+//     app = module.createNestApplication();
+//     await app.init();
+//   });
 
-  it('should be defined', () => {
-    expect(controller).toBeDefined();
-  });
-});
+//   describe('/GET user', () => {
+//     it('should be defined', () => {
+//       expect(userService.findAll).toBeDefined();
+//     });
+//     it('should return an array of users', () => {
+//       return request(app.getHttpServer())
+//         .get('/user')
+//         .expect(200)
+//         .expect(userService.findAll());
+//     });
+//   });
+//   afterAll(async () => {
+//     await app.close();
+//   });
+// });

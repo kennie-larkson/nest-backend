@@ -1,10 +1,15 @@
 export default interface User {
-  id: number;
-  name: string;
+  fname: string;
+  lname: string;
   email: string;
   password: string;
-  // gender: string;
-  // age: number;
-  // complexion: string;
-  // friends: string[];
+  gender: string;
+}
+
+export interface ReturnedUser {
+  id: number;
+  fname: string;
+  lname: string;
+  email: string;
+  gender: string;
 }

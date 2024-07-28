@@ -1,0 +1,38 @@
+version: '3.8'
+services:
+  devmongo:
+    container_name: devDB
+    image: mongo:latest
+    ports:
+      - '27017:27017'
+    volumes:
+      - './data/mongo:/data/mongo'
+
+    env_file:
+      - .development.env
+
+  testmongo:
+    container_name: testDB
+    image: mongo:latest
+    ports:
+      - '27018:27018'
+    volumes:
+      - './data/mongotest:/data/mongotest'
+
+    env_file:
+      - .development.env
+
+  rediscontainer:
+    container_name: redis-container
+    image: 'redis:alpine'
+    ports:
+      - '6379:6379'
+
+  redis-commander:
+    image: rediscommander/redis-commander:latest
+    environment:
+      - REDIS_HOSTS=local:rediscontainer:6379
+    ports:
+      - '8081:8081'
+    depends_on:
+      - rediscontainer
