@@ -36,6 +36,6 @@ lerna-debug.log*
 !.vscode/extensions.json
 
 #environment variable
-*.env
+
 .development.env
 .env.test
