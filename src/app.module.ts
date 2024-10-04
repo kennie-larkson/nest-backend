@@ -34,6 +34,7 @@ const validationSchema = Joi.object({
         entities: [__dirname + '/**/*.entity{.ts,.js}'],
         synchronize: configService.get<string>('NODE_ENV') === 'development',
         logging: configService.get<string>('NODE_ENV') === 'development',
+        environment: configService.get<string>('NODE_ENV'),
         //migrationsRun: true,
         migrations: [__dirname + '/migrations/**/*{.ts,.js}'],
         ssl: true,

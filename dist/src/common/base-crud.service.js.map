@@ -1,0 +1,1 @@
+{"version":3,"file":"base-crud.service.js","sourceRoot":"","sources":["../../../src/common/base-crud.service.ts"],"names":[],"mappings":";;;AACA,uDAA0D;AAG1D,MAAsB,eAEpB,SAAQ,iCAA+B;IACvC,YAA+B,UAAmC;QAChE,KAAK,CAAC,UAAU,CAAC,CAAC;QADW,eAAU,GAAV,UAAU,CAAyB;IAElE,CAAC;CACF;AAND,0CAMC"}
