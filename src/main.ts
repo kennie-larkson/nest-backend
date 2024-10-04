@@ -20,7 +20,7 @@ async function bootstrap() {
   const config = new DocumentBuilder()
     .addBearerAuth()
     .setTitle('Authentication System')
-    .setDescription('The Authentication system API decsription.')
+    .setDescription('The Authentication system API description.')
     .setVersion('v1.0')
     .addTag('swagger-documentation')
     .build();
