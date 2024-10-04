@@ -20,6 +20,10 @@ export class AuthTokenService {
     try {
       const access_token = this.jwtService.sign(payload, {
         expiresIn: this.configService.get<string>('DEV_JWT_TOKEN_EXPIRATION'),
+        secret:
+          process.env.NODE_ENV === 'development'
+            ? this.configService.get<string>('DEV_JWT_SECRET')
+            : this.configService.get<string>('PROD_JWT_SECRET'),
       });
       return access_token;
     } catch (error) {
